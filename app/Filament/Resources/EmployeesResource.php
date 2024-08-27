@@ -9,8 +9,10 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\EmployeesResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -30,8 +32,9 @@ class EmployeesResource extends Resource
                     ->schema([
                         TextInput::make('name')->required(),
                         TextInput::make('location_code')->required(),
-                        TextInput::make('birth_date')->required()
+                        DatePicker::make('birth_date')->required()
                                     ->placeholder('YYYY-MM-DD'),
+
                     ])
                     ->columns(2),
             ]);
@@ -46,7 +49,19 @@ class EmployeesResource extends Resource
                 TextColumn::make('birth_date')->sortable()->searchable(),
                 ])
             ->filters([
-                //
+                Filter::make('age')
+                ->form([
+                    TextInput::make('age')
+                        ->label('Age')
+                ])
+                ->query(function (Builder $query, array $data) {
+                    if ($data['age']) {
+                        return $query->age($data['age']);
+                    }
+
+                    return $query;
+                }),
+                
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
