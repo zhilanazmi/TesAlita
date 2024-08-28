@@ -5,6 +5,11 @@
     * `Locations.php` : Fungsinya untuk endefinisikan model Eloquent yang berhubungan dengan tabel locations di database. Model ini adalah representasi dari entitas Locations dan berfungsi sebagai jembatan antara tabel database dan logika aplikasi.
     * `User.php` : Model Eloquent yang mewakili entitas User, yang digunakan untuk mengelola data pengguna dalam aplikasi. Model ini memiliki peran penting karena terkait dengan autentikasi dan otorisasi pengguna, serta mengelola informasi pengguna seperti nama, email, dan password.
 
+* `database/seeders/` : Untuk mengisi database dengan data awal atau contoh data default yang diperlukan oleh aplikasi.
+    * `EmployeesTableSeeder.php` : File ini untuk mengisi data tabel Employees agar orang lain dapat menggunakan contoh data yang sudah dibuat tanpa perlu mengimport file database .sql lagi.
+    * `LocationsTableSeeder.php` : File ini untuk mengisi data tabel Locations agar orang lain dapat menggunakan contoh data yang sudah dibuat tanpa perlu mengimport file database .sql lagi.
+    * `DatabaseSeeder.php` : File ini untuk menjalankan atau memanggil semua data yang sudah dibuat.
+
 
 
 ## Structure Web Filament
@@ -41,7 +46,7 @@
    php artisan key:generate
    ```
    ```console
-   php artisan migrate
+   php artisan migrate --seed
    ```
    ```console
    php artisan make:filament-user
@@ -51,3 +56,9 @@
    ```console
    php artisan serve
    ```
+
+4. Testing
+    ```console
+    http://localhost:8000/admin/login
+    ```
+    Using your filament user
