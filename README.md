@@ -1,4 +1,12 @@
 
+## Structure Web Laravel
+* `app/Models/` : Representasi dari tabel dalam database dan fungisnya untuk berinteraksi dengan data tersebut, termasuk operasi CRUD, hubungan antar tabel, dan memungkinkan untuk insert, update, dan delete pada tabel database.
+    * `Employess.php` : Fungsinya untuk endefinisikan model Eloquent yang berhubungan dengan tabel employees di database. Model ini adalah representasi dari entitas Employee dan berfungsi sebagai jembatan antara tabel database dan logika aplikasi.
+    * `Locations.php` : Fungsinya untuk endefinisikan model Eloquent yang berhubungan dengan tabel locations di database. Model ini adalah representasi dari entitas Locations dan berfungsi sebagai jembatan antara tabel database dan logika aplikasi.
+    * `User.php` : Model Eloquent yang mewakili entitas User, yang digunakan untuk mengelola data pengguna dalam aplikasi. Model ini memiliki peran penting karena terkait dengan autentikasi dan otorisasi pengguna, serta mengelola informasi pengguna seperti nama, email, dan password.
+
+
+
 ## Structure Web Filament
 * `app/Filament/Resources` : Berisi resource files Filament yang mendefinisikan operasi CRUD untuk data Employees.
     * `app/Filament/Resources/EmployeesResources/Pages/`
